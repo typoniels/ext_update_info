@@ -1,0 +1,23 @@
+{
+    "name": "svenjuergens/ext-update-info",
+    "type": "typo3-cms-extension",
+    "description": "Informs about existing updates of extensions",
+    "authors": [
+        {
+            "name": "Sven Juergens",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^9.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "SvenJuergens\\ExtUpdateInfo\\": "Classes"
+        }
+    },
+    "replace": {
+        "svenjuergens/ext-update-info": "self.version",
+        "typo3-ter/ext-update-info": "self.version"
+    }
+}
