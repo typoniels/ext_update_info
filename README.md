@@ -12,4 +12,5 @@ Simply install the extension with Extension Manager or Composer
 
 ## Recommendation
 add the scheduler task, "Update Extension List"
+
 ![schedulertask](https://raw.github.com/SvenJuergens/ext_update_info/master/Documentation/recommendation-use-scheduler-task.png)
