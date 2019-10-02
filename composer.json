@@ -2,6 +2,7 @@
     "name": "svenjuergens/ext-update-info",
     "type": "typo3-cms-extension",
     "description": "Informs about existing updates of extensions",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "Sven Juergens",
