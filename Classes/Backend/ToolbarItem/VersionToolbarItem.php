@@ -4,6 +4,7 @@ namespace SvenJuergens\ExtUpdateInfo\Backend\ToolbarItem;
 use TYPO3\CMS\Backend\Backend\ToolbarItems\SystemInformationToolbarItem;
 use TYPO3\CMS\Backend\Routing\UriBuilder;
 use TYPO3\CMS\Backend\Toolbar\Enumeration\InformationStatus;
+use TYPO3\CMS\Core\Authentication\BackendUserAuthentication;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 use TYPO3\CMS\Extbase\Utility\LocalizationUtility;
@@ -24,6 +25,9 @@ class VersionToolbarItem
      */
     public function appendMessage(SystemInformationToolbarItem $systemInformationToolbarItem)
     {
+        if($this->getBackendUser()->isSystemMaintainer() === false){
+            return;
+        }
         $listUtility = GeneralUtility::makeInstance(ObjectManager::class)->get(ListUtility::class);
         $extensions = $listUtility->getAvailableAndInstalledExtensionsWithAdditionalInformation();
         $counter = 0;
@@ -47,5 +51,13 @@ class VersionToolbarItem
                 'tools_ExtensionmanagerExtensionmanager'
             );
         }
+    }
+
+    /**
+     * @return BackendUserAuthentication
+     */
+    protected function getBackendUser(): BackendUserAuthentication
+    {
+        return $GLOBALS['BE_USER'];
     }
 }
